@@ -10,18 +10,16 @@ import UIKit
 
 class FirstFlowCoordinator: Coordinator {
     
-    var parent: Coordinator?
+    weak var parent: Coordinator?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
 
-    init(navigationController: UINavigationController) {
+    required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    weak var parentCoordinator: MainCoordinator?
-
     func start() {
-        let viewController = FirstScreenViewController.instance()
+        let viewController = FirstSceneViewController.instance()
         
         viewController.onNext = { [unowned self] in
             self.goToSecond()
@@ -31,7 +29,7 @@ class FirstFlowCoordinator: Coordinator {
     }
     
     func goToSecond() {
-        let viewController = SecondScreenViewController.instance()
+        let viewController = SecondSceneViewController.instance()
         viewController.onFinish = { [unowned self] in
             self.onFlowFinish()
         }
@@ -40,7 +38,7 @@ class FirstFlowCoordinator: Coordinator {
     
     func onFlowFinish() {
         navigationController.dismiss(animated: true)
-        parentCoordinator?.childDidFinish(self)
+        parent?.childDidFinish(self)
     }
 }
 

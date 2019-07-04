@@ -14,7 +14,7 @@ class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
@@ -28,18 +28,20 @@ class MainCoordinator: Coordinator {
         navigationController.setViewControllers([viewController], animated: false)
     }
     
+    // MARK: - Simple Flow
+    
     func goToFirst() {
-        let childCoordinator = firstFlowCoordinator()
-        self.navigationController.present(childCoordinator.navigationController, animated: true)
-        childCoordinator.start()
+        let firstFlowCoordinator = FirstFlowCoordinator.instance(parent: self)
+        self.navigationController.present(firstFlowCoordinator.navigationController, animated: true)
+        firstFlowCoordinator.start()
     }
     
-    private func firstFlowCoordinator() -> FirstFlowCoordinator {
-        let navigationController = UINavigationController()
-        let firstFlowCoordinator = FirstFlowCoordinator(navigationController: navigationController)
-        firstFlowCoordinator.parentCoordinator = self
-        childCoordinators.append(firstFlowCoordinator)
-        return firstFlowCoordinator
-    }
+    // MARK: - Passing data back example Flow
     
+    func goToCurrentLocation() {
+        let currentLocationCoordinator = CurrentLocationCoordinator.instance(parent: self)
+        self.navigationController.present(currentLocationCoordinator.navigationController, animated: true)
+        currentLocationCoordinator.start()
+    }
+        
 }

@@ -1,5 +1,5 @@
 //
-//  SecondScreenViewController.swift
+//  SecondSceneViewController.swift
 //  CoodinatorProofOfConcept
 //
 //  Created by José Victor Pereira Costa on 04/07/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondScreenViewController: UIViewController {
+class SecondSceneViewController: UIViewController {
     
     var onFinish: (() -> Void)?
     

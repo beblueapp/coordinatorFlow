@@ -14,10 +14,21 @@ protocol Coordinator: AnyObject {
     var navigationController: UINavigationController { get set }
     var parent: Coordinator? { get set }
     
+    init(navigationController: UINavigationController)
+    
     func start()
+    
 }
 
 extension Coordinator {
+    
+    static func instance(parent: Coordinator? = nil) -> Self {
+        let navigationController = UINavigationController()
+        let coordinator = Self.init(navigationController: navigationController)
+        coordinator.parent = parent
+        parent?.childCoordinators.append(coordinator)
+        return coordinator
+    }
     
     func childDidFinish(_ child: Coordinator?) {
         for (index, coordinator) in childCoordinators.enumerated() {
@@ -27,5 +38,4 @@ extension Coordinator {
             }
         }
     }
-    
 }

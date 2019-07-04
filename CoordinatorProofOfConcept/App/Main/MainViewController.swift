@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     var onStart: (() -> Void)?
+    var onPassingDataExample: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +22,10 @@ class MainViewController: UIViewController {
     @IBAction func startFlowButtonTapped(_ sender: Any) {
         onStart?()
     }
-
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    @IBAction func passingDataBackButtonTapped(_ sender: Any) {
+        onPassingDataExample?()
+    }
+    
 
 }

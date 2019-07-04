@@ -1,5 +1,5 @@
 //
-//  FirstScreenViewController.swift
+//  FirstSceneViewController.swift
 //  CoodinatorProofOfConcept
 //
 //  Created by José Victor Pereira Costa on 04/07/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstScreenViewController: UIViewController {
+class FirstSceneViewController: UIViewController {
     
     var onNext: (() -> Void)?
     

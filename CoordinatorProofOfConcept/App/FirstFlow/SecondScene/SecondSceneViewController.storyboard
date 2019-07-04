@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Second Screen View Controller-->
+        <!--Second Scene View Controller-->
         <scene sceneID="bfs-hD-wS2">
             <objects>
-                <viewController id="e7e-ia-f9w" customClass="SecondScreenViewController" customModule="CoodinatorProofOfConcept" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="e7e-ia-f9w" customClass="SecondSceneViewController" customModule="CoordinatorProofOfConcept" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G6E-Q7-Vs5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
