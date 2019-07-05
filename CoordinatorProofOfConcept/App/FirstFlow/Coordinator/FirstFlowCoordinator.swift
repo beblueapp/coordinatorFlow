@@ -20,25 +20,35 @@ class FirstFlowCoordinator: Coordinator {
     
     func start() {
         let viewController = FirstSceneViewController.instance()
-        
-        viewController.onNext = { [unowned self] in
-            self.goToSecond()
-        }
-        
+        setUpFirstSceneViewController(viewController)
         navigationController.setViewControllers([viewController], animated: true)
     }
     
-    func goToSecond() {
+    private func goToSecond() {
         let viewController = SecondSceneViewController.instance()
-        viewController.onFinish = { [unowned self] in
-            self.onFlowFinish()
-        }
+        setUpSecondSceneViewController(viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func onFlowFinish() {
+    private func onFlowFinish() {
         navigationController.dismiss(animated: true)
         parent?.childDidFinish(self)
+    }
+    
+    private func setUpFirstSceneViewController(_ controller: FirstSceneViewController) {
+        controller.onNext = { [unowned self] in
+            self.goToSecond()
+        }
+        
+        controller.onCancel = { [unowned self] in
+            self.navigationController.dismiss(animated: true)
+        }
+    }
+    
+    private func setUpSecondSceneViewController(_ controller: SecondSceneViewController) {
+        controller.onFinish = { [unowned self] in
+            self.onFlowFinish()
+        }
     }
 }
 

@@ -11,6 +11,7 @@ import UIKit
 class FirstSceneViewController: UIViewController {
     
     var onNext: (() -> Void)?
+    var onCancel: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,4 +21,7 @@ class FirstSceneViewController: UIViewController {
         onNext?()
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        onCancel?()
+    }
 }
