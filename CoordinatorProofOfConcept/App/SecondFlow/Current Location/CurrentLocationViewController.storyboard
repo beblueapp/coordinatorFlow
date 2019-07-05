@@ -27,6 +27,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="040-9F-EkR">
                                 <rect key="frame" x="154" y="466.5" width="106" height="30"/>
                                 <state key="normal" title="Select Location"/>
+                                <connections>
+                                    <action selector="selectLocationButtonTapped:" destination="s33-e1-515" eventType="touchUpInside" id="0uN-f7-WRe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,6 +41,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jxs-15-7Be"/>
                     </view>
+                    <connections>
+                        <outlet property="currentLocationLabel" destination="LCo-Rc-BCb" id="aCg-yl-LsV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHO-05-3Kk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

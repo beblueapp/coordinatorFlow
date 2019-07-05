@@ -20,28 +20,33 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let viewController = MainViewController.instance()
-        
-        viewController.onStart = { [unowned self] in
+        setUpMainViewController(viewController)
+        navigationController.setViewControllers([viewController], animated: false)
+    }
+    
+    private func setUpMainViewController(_ controller: MainViewController) {
+        controller.onStart = { [unowned self] in
             self.goToFirst()
         }
-        
-        navigationController.setViewControllers([viewController], animated: false)
+        controller.onPassingDataExample = { [unowned self] in
+            self.goToCurrentLocation()
+        }
     }
     
     // MARK: - Simple Flow
     
     func goToFirst() {
         let firstFlowCoordinator = FirstFlowCoordinator.instance(parent: self)
-        self.navigationController.present(firstFlowCoordinator.navigationController, animated: true)
         firstFlowCoordinator.start()
+        self.navigationController.present(firstFlowCoordinator.navigationController, animated: true)
     }
     
     // MARK: - Passing data back example Flow
     
     func goToCurrentLocation() {
         let currentLocationCoordinator = CurrentLocationCoordinator.instance(parent: self)
-        self.navigationController.present(currentLocationCoordinator.navigationController, animated: true)
         currentLocationCoordinator.start()
+        self.navigationController.present(currentLocationCoordinator.navigationController, animated: true)
     }
         
 }

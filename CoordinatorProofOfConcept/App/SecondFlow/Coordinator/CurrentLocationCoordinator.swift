@@ -18,11 +18,33 @@ class CurrentLocationCoordinator: Coordinator {
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        navigationController.setNavigationBarHidden(true, animated: false)
     }
     
     func start() {
-        let currentLocationViewController = CurrentLocationViewController.instance()
-        navigationController.setViewControllers([currentLocationViewController], animated: false)
+        let controller = CurrentLocationViewController.instance()
+        setUpCurrentLocationViewController(controller)
+        navigationController.setViewControllers([controller], animated: false)
     }
+    
+    private func setUpCurrentLocationViewController(_ controller: CurrentLocationViewController) {
+        controller.onSelectLocation = { [unowned self] in
+            self.goToSelectLocation()
+        }
+    }
+    
+    private func goToSelectLocation() {
+        let controller = SelectLocationViewController.instance()
+        setUpSelectLocationViewController(controller)
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    private func setUpSelectLocationViewController(_ controller: SelectLocationViewController) {
+        controller.onLocationSelected = { selectedLocation in
+            
+        }
+    }
+    
+    
     
 }

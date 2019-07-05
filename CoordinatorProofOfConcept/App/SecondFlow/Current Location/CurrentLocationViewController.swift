@@ -9,9 +9,20 @@
 import UIKit
 
 class CurrentLocationViewController: UIViewController {
-
+    
+    @IBOutlet weak var currentLocationLabel: UILabel!
+    var onSelectLocation: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func selectLocationButtonTapped(_ sender: Any) {
+        onSelectLocation?()
+    }
+    
+    public func setCurrentLocation(_ location: String) {
+        currentLocationLabel.text = location
+    }
+    
 }
