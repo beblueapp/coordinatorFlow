@@ -18,29 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCo-Rc-BCb">
-                                <rect key="frame" x="143" y="437.5" width="128" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="040-9F-EkR">
-                                <rect key="frame" x="154" y="466.5" width="106" height="30"/>
-                                <state key="normal" title="Select Location"/>
-                                <connections>
-                                    <action selector="selectLocationButtonTapped:" destination="s33-e1-515" eventType="touchUpInside" id="0uN-f7-WRe"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ydw-fX-Esp">
+                                <rect key="frame" x="143" y="419.5" width="128" height="57.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCo-Rc-BCb">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="040-9F-EkR">
+                                        <rect key="frame" x="0.0" y="27.5" width="128" height="30"/>
+                                        <state key="normal" title="Select Location"/>
+                                        <connections>
+                                            <action selector="selectLocationButtonTapped:" destination="s33-e1-515" eventType="touchUpInside" id="0uN-f7-WRe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="040-9F-EkR" firstAttribute="centerX" secondItem="LCo-Rc-BCb" secondAttribute="centerX" id="DDY-HP-fVW"/>
-                            <constraint firstItem="040-9F-EkR" firstAttribute="top" secondItem="LCo-Rc-BCb" secondAttribute="bottom" constant="8" symbolic="YES" id="L73-Xl-kGm"/>
-                            <constraint firstItem="LCo-Rc-BCb" firstAttribute="centerY" secondItem="20E-zt-nU4" secondAttribute="centerY" id="Njy-a3-eFy"/>
-                            <constraint firstItem="LCo-Rc-BCb" firstAttribute="centerX" secondItem="20E-zt-nU4" secondAttribute="centerX" id="ZCi-h5-Wve"/>
+                            <constraint firstItem="ydw-fX-Esp" firstAttribute="centerY" secondItem="20E-zt-nU4" secondAttribute="centerY" id="X1a-oc-BdG"/>
+                            <constraint firstItem="ydw-fX-Esp" firstAttribute="centerX" secondItem="20E-zt-nU4" secondAttribute="centerX" id="eG0-Wh-zbu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jxs-15-7Be"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xiB-ZL-Imp">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ac9-t0-vdB">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="s33-e1-515" id="jQU-GR-vwW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="currentLocationLabel" destination="LCo-Rc-BCb" id="aCg-yl-LsV"/>
                     </connections>

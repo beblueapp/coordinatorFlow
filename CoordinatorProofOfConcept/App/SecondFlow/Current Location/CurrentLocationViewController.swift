@@ -11,7 +11,9 @@ import UIKit
 class CurrentLocationViewController: UIViewController {
     
     @IBOutlet weak var currentLocationLabel: UILabel!
+    
     var onSelectLocation: (() -> Void)?
+    var onCancel: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,10 @@ class CurrentLocationViewController: UIViewController {
     
     @IBAction func selectLocationButtonTapped(_ sender: Any) {
         onSelectLocation?()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        onCancel?()
     }
     
     public func setCurrentLocation(_ location: String) {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SelectLocationViewController: UIViewController {
     
     var onLocationSelected: ((String) -> Void)?
@@ -37,8 +38,8 @@ extension SelectLocationViewController: UITableViewDataSource {
 extension SelectLocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedLocation = cities[indexPath.row]
-        onLocationSelected?(selectedLocation)
+        let location = cities[indexPath.row]
+        onLocationSelected?(location)
     }
     
 }

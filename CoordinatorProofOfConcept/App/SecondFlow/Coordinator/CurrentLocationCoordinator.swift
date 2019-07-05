@@ -9,41 +9,42 @@
 import UIKit
 
 class CurrentLocationCoordinator: Coordinator {
-
+    
     var childCoordinators: [Coordinator] = []
     
     var navigationController: UINavigationController
+    
+    private var currentLocationViewController: CurrentLocationViewController?
     
     weak var parent: Coordinator?
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        navigationController.setNavigationBarHidden(true, animated: false)
     }
     
     func start() {
         let controller = CurrentLocationViewController.instance()
+        currentLocationViewController = controller
         setUpCurrentLocationViewController(controller)
         navigationController.setViewControllers([controller], animated: false)
     }
     
     private func setUpCurrentLocationViewController(_ controller: CurrentLocationViewController) {
         controller.onSelectLocation = { [unowned self] in
-            self.goToSelectLocation()
+            self.goToSelectLocationWithClosure()
+        }
+        controller.onCancel = { [unowned self] in
+            self.navigationController.dismiss(animated: true)
         }
     }
     
-    private func goToSelectLocation() {
+    private func goToSelectLocationWithClosure() {
         let controller = SelectLocationViewController.instance()
         setUpSelectLocationViewController(controller)
         navigationController.pushViewController(controller, animated: true)
     }
     
     private func setUpSelectLocationViewController(_ controller: SelectLocationViewController) {
-        let currentLocationViewController = navigationController.viewControllers.first { viewController -> Bool in
-            viewController is CurrentLocationViewController
-        } as? CurrentLocationViewController
-        
         controller.onLocationSelected = { [weak currentLocationViewController, unowned self] selectedLocation in
             currentLocationViewController?.setCurrentLocation(selectedLocation)
             self.navigationController.popViewController(animated: true)
@@ -51,3 +52,4 @@ class CurrentLocationCoordinator: Coordinator {
     }
     
 }
+
