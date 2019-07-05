@@ -35,6 +35,7 @@ class CurrentLocationCoordinator: Coordinator {
         }
         controller.onCancel = { [unowned self] in
             self.navigationController.dismiss(animated: true)
+            self.parent?.childDidFinish(self)
         }
     }
     
@@ -45,8 +46,8 @@ class CurrentLocationCoordinator: Coordinator {
     }
     
     private func setUpSelectLocationViewController(_ controller: SelectLocationViewController) {
-        controller.onLocationSelected = { [weak currentLocationViewController, unowned self] selectedLocation in
-            currentLocationViewController?.setCurrentLocation(selectedLocation)
+        controller.onLocationSelected = { [unowned self] selectedLocation in
+            self.currentLocationViewController?.setCurrentLocation(selectedLocation)
             self.navigationController.popViewController(animated: true)
         }
     }
