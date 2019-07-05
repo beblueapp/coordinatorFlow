@@ -38,7 +38,7 @@ class MainCoordinator: Coordinator {
     func goToFirst() {
         let firstFlowCoordinator = FirstFlowCoordinator.instance(parent: self)
         firstFlowCoordinator.start()
-        self.navigationController.present(firstFlowCoordinator.navigationController, animated: true)
+        navigationController.present(firstFlowCoordinator.navigationController, animated: true)
     }
     
     // MARK: - Passing data back example Flow
@@ -46,7 +46,7 @@ class MainCoordinator: Coordinator {
     func goToCurrentLocation() {
         let currentLocationCoordinator = CurrentLocationCoordinator.instance(parent: self)
         currentLocationCoordinator.start()
-        self.navigationController.present(currentLocationCoordinator.navigationController, animated: true)
+        navigationController.present(currentLocationCoordinator.navigationController, animated: true)
     }
         
 }

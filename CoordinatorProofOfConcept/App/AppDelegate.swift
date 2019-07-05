@@ -13,10 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    lazy var coordinator: Coordinator = {
-        let navigationController = UINavigationController()
-        return MainCoordinator(navigationController: navigationController)
-    }()
+    lazy var coordinator: MainCoordinator = .instance()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()

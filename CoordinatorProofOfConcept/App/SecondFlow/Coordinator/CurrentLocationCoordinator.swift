@@ -31,7 +31,7 @@ class CurrentLocationCoordinator: Coordinator {
     
     private func setUpCurrentLocationViewController(_ controller: CurrentLocationViewController) {
         controller.onSelectLocation = { [unowned self] in
-            self.goToSelectLocationWithClosure()
+            self.goToSelectLocation()
         }
         controller.onCancel = { [unowned self] in
             self.navigationController.dismiss(animated: true)
@@ -39,7 +39,7 @@ class CurrentLocationCoordinator: Coordinator {
         }
     }
     
-    private func goToSelectLocationWithClosure() {
+    private func goToSelectLocation() {
         let controller = SelectLocationViewController.instance()
         setUpSelectLocationViewController(controller)
         navigationController.pushViewController(controller, animated: true)
