@@ -40,11 +40,14 @@ class CurrentLocationCoordinator: Coordinator {
     }
     
     private func setUpSelectLocationViewController(_ controller: SelectLocationViewController) {
-        controller.onLocationSelected = { selectedLocation in
-            
+        let currentLocationViewController = navigationController.viewControllers.first { viewController -> Bool in
+            viewController is CurrentLocationViewController
+        } as? CurrentLocationViewController
+        
+        controller.onLocationSelected = { [weak currentLocationViewController, unowned self] selectedLocation in
+            currentLocationViewController?.setCurrentLocation(selectedLocation)
+            self.navigationController.popViewController(animated: true)
         }
     }
-    
-    
     
 }
